@@ -84,7 +84,7 @@ public class StarlingRoot extends Sprite {
         event.stopPropagation();
         var touch:Touch = event.getTouch(getCredentialStateBtn, TouchPhase.ENDED);
         if (touch && touch.phase == TouchPhase.ENDED) {
-            appleSignIn.getCredentialState("001076.c4cee7c59d2d43fe9ec606971879c324.2337",
+            appleSignIn.getCredentialState("x.x.x",
                     function (state:int, error:Error = null):void {
                         if (error) {
                             statusLabel.text = "Credential Error: " + error.message + "\nReason: ";
