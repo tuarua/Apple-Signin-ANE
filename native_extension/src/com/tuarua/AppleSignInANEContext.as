@@ -29,8 +29,7 @@ public class AppleSignInANEContext {
     internal static const NAME:String = "AppleSignInANE";
     internal static const TRACE:String = "TRACE";
     private static var _context:ExtensionContext;
-    public static var closures:Dictionary = new Dictionary();
-    public static var closureCallers:Dictionary = new Dictionary();
+    public static var callbacks:Dictionary = new Dictionary();
     private static var argsAsJSON:Object;
 
     private static const CREDENTIAL_STATE:String = "AppleSignInANE.OnCredentialState";
@@ -50,20 +49,23 @@ public class AppleSignInANEContext {
         return _context;
     }
 
-    public static function createEventId(listener:Function, listenerCaller:Object = null):String {
-        var eventId:String;
+    public static function createCallback(listener:Function):String {
+        var id:String;
         if (listener != null) {
-            eventId = context.call("createGUID") as String;
-            closures[eventId] = listener;
-            if (listenerCaller) {
-                closureCallers[eventId] = listenerCaller;
-            }
+            id = context.call("createGUID") as String;
+            callbacks[id] = listener;
         }
-        return eventId;
+        return id;
+    }
+
+    public static function callCallback(callbackId:String, ... args):void {
+        var callback:Function = callbacks[callbackId];
+        if (callback == null) return;
+        callback.apply(null, args);
+        delete callbacks[callbackId];
     }
 
     private static function gotEvent(event:StatusEvent):void {
-        var closure:Function;
         var error:Error;
         switch (event.level) {
             case TRACE:
@@ -92,16 +94,13 @@ public class AppleSignInANEContext {
                 break;
             case CREDENTIAL_STATE:
                 argsAsJSON = JSON.parse(event.code);
-                closure = closures[argsAsJSON.callbackId];
-                if (closure == null) return;
                 var state:int = -1;
                 if (argsAsJSON.hasOwnProperty("error") && argsAsJSON.error) {
                     error = new Error(argsAsJSON.error.message, argsAsJSON.error.code);
                 } else if (argsAsJSON.hasOwnProperty("credentialState") && argsAsJSON.credentialState) {
                     state = argsAsJSON.credentialState;
                 }
-                closure.call(null, state, error);
-                delete closures[argsAsJSON.callbackId];
+                callCallback(argsAsJSON.callbackId, state, error);
                 break;
         }
     }

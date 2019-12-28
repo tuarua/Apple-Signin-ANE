@@ -1,6 +1,4 @@
 package {
-
-
 import com.tuarua.AppleSignInANE;
 import com.tuarua.applesigninane.AppleIDCredential;
 import com.tuarua.applesigninane.AppleIDProviderCredentialState;
@@ -9,11 +7,9 @@ import com.tuarua.applesigninane.AuthorizationScope;
 import com.tuarua.applesigninane.UserDetectionStatus;
 import com.tuarua.applesigninane.events.AppleSignInErrorEvent;
 import com.tuarua.applesigninane.events.AppleSignInEvent;
-import com.tuarua.utils.os;
 
 import flash.desktop.NativeApplication;
 import flash.events.Event;
-
 import starling.display.Sprite;
 import starling.events.Touch;
 import starling.events.TouchEvent;
@@ -37,19 +33,9 @@ public class StarlingRoot extends Sprite {
         NativeApplication.nativeApplication.addEventListener(Event.EXITING, onExiting);
     }
 
-    private function isSupported():Boolean {
-        if (os.isIos && os.majorVersion >= 13) return true;
-        if (os.isTvos && os.majorVersion >= 13) return true;
-        return os.isMacos && os.majorVersion >= 10 && os.minorVersion >= 15;
-    }
-
     public function start():void {
-        trace(os.majorVersion, os.minorVersion);
-        if (!isSupported()) {
-            trace("Apple Sign In is iOS13+, macOS10.15+, tvOS13+ only");
-            return;
-        }
         appleSignIn = AppleSignInANE.appleSignIn;
+        if (!appleSignIn.isSupported) return;
         appleSignIn.addEventListener(AppleSignInErrorEvent.ERROR, onError);
         appleSignIn.addEventListener(AppleSignInEvent.SUCCESS, onSuccess);
         initMenu();
@@ -124,6 +110,7 @@ public class StarlingRoot extends Sprite {
 
     private function onSuccess(event:AppleSignInEvent):void {
         var appleIDCredential:AppleIDCredential = event.appleIDCredential;
+        trace(appleIDCredential.user);
         statusLabel.text = "";
         statusLabel.text += "User: " + appleIDCredential.user + "\n";
         statusLabel.text += "Fullname: " + appleIDCredential.fullName.givenName + " " + appleIDCredential.fullName.familyName + "\n";
@@ -137,7 +124,7 @@ public class StarlingRoot extends Sprite {
                 realUserStatus = "Likely Real";
                 break;
             case UserDetectionStatus.unsupported:
-                realUserStatus = "Unsupportedl";
+                realUserStatus = "Unsupported";
                 break;
         }
         statusLabel.text += "realUserStatus: " + realUserStatus + "\n";

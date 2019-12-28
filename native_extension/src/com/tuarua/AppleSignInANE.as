@@ -35,15 +35,27 @@ public class AppleSignInANE extends EventDispatcher {
         _appleSignIn = this;
     }
 
+    /**
+     * Starts the authorization flow.
+     *
+     * @param requestedScopes The contact information to be requested from the user during authentication.
+     */
     public function signIn(requestedScopes:Vector.<String> = null):void {
-        if (!isSupported()) return;
+        if (!isSupported) return;
         AppleSignInANEContext.context.call("signIn", requestedScopes);
     }
 
+    /**
+     * Returns the credential state for the given user in a completion handler.
+     *
+     * @param forUserID An opaque string associated with the Apple ID that your app receives in the credential’s user
+     * property after performing a successful authentication request.
+     * @param listener A block the method calls to report the state and an optional error condition.
+     */
     public function getCredentialState(forUserID:String, listener:Function):void {
-        if (!isSupported()) return;
+        if (!isSupported) return;
         AppleSignInANEContext.context.call("getCredentialState", forUserID,
-                AppleSignInANEContext.createEventId(listener));
+                AppleSignInANEContext.createCallback(listener));
     }
 
     /** The ANE instance. */
@@ -54,7 +66,10 @@ public class AppleSignInANE extends EventDispatcher {
         return _appleSignIn;
     }
 
-    private function isSupported():Boolean {
+    /**
+     * Returns whether Apple Sign In is supported on the OS and version
+     */
+    public function get isSupported():Boolean {
         if (os.isIos && os.majorVersion >= 13) return true;
         if (os.isTvos && os.majorVersion >= 13) return true;
         if (os.isMacos && os.majorVersion >= 10 && os.minorVersion >= 15) return true;

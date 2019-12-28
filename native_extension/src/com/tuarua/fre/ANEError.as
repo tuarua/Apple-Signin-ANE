@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Tua Rua Ltd.
+ * Copyright 2017 Tua Rua Ltd.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -63,7 +63,6 @@ public class ANEError extends Error {
         "insufficientMemory"
     ];
 
-    /** @private */
     public function ANEError(message:String, errorID:int, type:String, source:String, stackTrace:String) {
         _stackTrace = stackTrace;
         _source = source;
