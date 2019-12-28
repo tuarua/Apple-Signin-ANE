@@ -2,7 +2,7 @@ package com.tuarua.utils {
 import com.tuarua.AppleSignInANEContext;
 
 import flash.system.Capabilities;
-
+/** @private */
 public final class os {
     private static const platform:String = Capabilities.version.substr(0, 3).toLowerCase();
     public static const isWindows:Boolean = platform == "win";

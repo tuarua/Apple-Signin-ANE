@@ -45,8 +45,6 @@ public class SwiftController: NSObject {
         if let requestedScopes = [ASAuthorization.Scope](argv[0]) {
             request.requestedScopes = requestedScopes
         }
-
-        // trace("Bundle.main.bundleIdentifier", Bundle.main.bundleIdentifier ?? "unknown")
         
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
