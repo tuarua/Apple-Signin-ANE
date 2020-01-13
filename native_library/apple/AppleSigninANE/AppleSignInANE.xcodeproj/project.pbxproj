@@ -41,6 +41,9 @@
 		90E3D13723B012A2005D8AEE /* FreSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E3D13623B012A2005D8AEE /* FreSwift.framework */; };
 		90E3D13823B012B1005D8AEE /* Adobe AIR in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6DC59F20542D2800E20217 /* Adobe AIR */; };
 		90E3D13923B012B3005D8AEE /* Adobe AIR_64 in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6DC5A020542D2800E20217 /* Adobe AIR_64 */; };
+		90EA0D5E23CBD2E8002F5DD0 /* FreASPasswordCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA0D5D23CBD2E8002F5DD0 /* FreASPasswordCredential.swift */; };
+		90EA0D5F23CBD2E8002F5DD0 /* FreASPasswordCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA0D5D23CBD2E8002F5DD0 /* FreASPasswordCredential.swift */; };
+		90EA0D6023CBD2E8002F5DD0 /* FreASPasswordCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA0D5D23CBD2E8002F5DD0 /* FreASPasswordCredential.swift */; };
 		CE05603F1FB25CE200D06976 /* FreSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE05603E1FB25CE200D06976 /* FreSwift.framework */; platformFilter = ios; };
 		CE0560401FB25CE200D06976 /* FreSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE05603E1FB25CE200D06976 /* FreSwift.framework */; platformFilter = ios; };
 		CE0560451FB25DD000D06976 /* AppleSignInANE_FW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE87F4831FB259FA005CF7DF /* AppleSignInANE_FW.framework */; platformFilter = ios; };
@@ -95,6 +98,7 @@
 		90E3D12123B0117E005D8AEE /* AppleSignInANE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppleSignInANE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E3D13123B0126D005D8AEE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		90E3D13623B012A2005D8AEE /* FreSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FreSwift.framework; path = Carthage/Build/Mac/FreSwift.framework; sourceTree = "<group>"; };
+		90EA0D5D23CBD2E8002F5DD0 /* FreASPasswordCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreASPasswordCredential.swift; sourceTree = "<group>"; };
 		CE05603E1FB25CE200D06976 /* FreSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FreSwift.framework; path = Carthage/Build/iOS/FreSwift.framework; sourceTree = "<group>"; };
 		CE05604D1FB25E8E00D06976 /* FreMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreMacros.h; sourceTree = "<group>"; };
 		CE6DC59F20542D2800E20217 /* Adobe AIR */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "Adobe AIR"; path = "../../../../../SDKs/AIRSDK_30/runtimes/air-captive/mac/Adobe AIR.framework/Versions/1.0/Adobe AIR"; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 				90C9ABCB23B03E65008496F6 /* FrePersonNameComponents.swift */,
 				90C9ABCF23B040BA008496F6 /* FreASAuthorization.Scope.swift */,
 				90602C9E23B0E94300BAC603 /* FreASAuthorizationError.swift */,
+				90EA0D5D23CBD2E8002F5DD0 /* FreASPasswordCredential.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 				90602CA823B1523A00BAC603 /* AppleSignInEvent.swift in Sources */,
 				90E3D12923B011C1005D8AEE /* SwiftController+FreSwift.swift in Sources */,
 				90E3D12A23B011C3005D8AEE /* SwiftController.swift in Sources */,
+				90EA0D6023CBD2E8002F5DD0 /* FreASPasswordCredential.swift in Sources */,
 				90C9ABD223B040BA008496F6 /* FreASAuthorization.Scope.swift in Sources */,
 				90E3D12C23B011CA005D8AEE /* SwiftController+ASAuthorizationControllerDelegate.swift in Sources */,
 				90C9ABCE23B03E65008496F6 /* FrePersonNameComponents.swift in Sources */,
@@ -584,6 +590,7 @@
 				90C9ABC923B03B12008496F6 /* FreASAuthorizationAppleIDCredential.swift in Sources */,
 				CE6DC5FB2054371C00E20217 /* SwiftController+FreSwift.swift in Sources */,
 				90602CA023B0E94300BAC603 /* FreASAuthorizationError.swift in Sources */,
+				90EA0D5F23CBD2E8002F5DD0 /* FreASPasswordCredential.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +615,7 @@
 				90C9ABC823B03B12008496F6 /* FreASAuthorizationAppleIDCredential.swift in Sources */,
 				CE88105B203889B7004FD8B4 /* AppleSignInEvent.swift in Sources */,
 				90602C9F23B0E94300BAC603 /* FreASAuthorizationError.swift in Sources */,
+				90EA0D5E23CBD2E8002F5DD0 /* FreASPasswordCredential.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,7 +667,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -711,7 +719,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
@@ -803,7 +811,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tuarua.AppleSignInANE;
 				PRODUCT_NAME = AppleSignInANE_FW;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -847,7 +855,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tuarua.AppleSignInANE;
 				PRODUCT_NAME = AppleSignInANE_FW;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1060,7 +1068,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tuarua.AppleSignInANE;
 				PRODUCT_NAME = AppleSignInANE_FW;
@@ -1105,7 +1113,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tuarua.AppleSignInANE;
 				PRODUCT_NAME = AppleSignInANE_FW;

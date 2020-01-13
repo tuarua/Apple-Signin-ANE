@@ -15,24 +15,26 @@
  */
 
 package com.tuarua.applesigninane.events {
+import com.tuarua.applesigninane.PasswordCredential;
 import com.tuarua.applesigninane.AppleIDCredential;
-
 import flash.events.Event;
 
 public class AppleSignInEvent extends Event {
     public static const SUCCESS:String = "AppleSignInANE.OnSuccess";
     public var appleIDCredential:AppleIDCredential;
+    public var passwordCredential:PasswordCredential;
 
     /** @private */
     public function AppleSignInEvent(type:String,
                                      appleIDCredential:AppleIDCredential = null,
+                                     passwordCredential:PasswordCredential = null,
                                      bubbles:Boolean = false, cancelable:Boolean = false) {
         super(type, bubbles, cancelable);
         this.appleIDCredential = appleIDCredential;
     }
 
     public override function clone():Event {
-        return new AppleSignInEvent(type, this.appleIDCredential, bubbles, cancelable);
+        return new AppleSignInEvent(type, this.appleIDCredential, this.passwordCredential, bubbles, cancelable);
     }
 
     public override function toString():String {

@@ -45,8 +45,7 @@ class AppleSignInEvent: NSObject {
         props["credentialState"] = credentialState
         props["error"] = error?.toDictionary()
         props["appleIDCredential"] = appleIDCredential?.toDictionary()
-        // props["passwordCredential"] = passwordCredential?.toDictionary()
-        
+        props["passwordCredential"] = passwordCredential?.toDictionary()
         return JSON(props).description
     }
     
