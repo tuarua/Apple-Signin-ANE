@@ -128,9 +128,11 @@ Open _bin-release/Entitlements.entitlements_ and update the 2 **XXXXXXXX** with 
 
 Update with your Mac Developer cert signature and run in **Terminal**
 
+```shell
 codesign -f -s "[Mac Developer: Team] (XXXXXXXX)" --deep --verbose Main.app/Contents/Frameworks/*
 codesign -f -s "[Mac Developer: Team] (XXXXXXXX)" --deep --verbose Main.app/Contents/Resources/*
 codesign -f -s "[Mac Developer: Team] (XXXXXXXX)" --entitlements Entitlements.entitlements --verbose Main.app/Contents/MacOS/*
+```
 
 #### Run the app!
 
