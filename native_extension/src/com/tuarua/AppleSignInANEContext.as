@@ -16,6 +16,7 @@
 
 package com.tuarua {
 import com.tuarua.applesigninane.AppleIDCredential;
+import com.tuarua.applesigninane.PasswordCredential;
 import com.tuarua.applesigninane.events.AppleSignInErrorEvent;
 import com.tuarua.applesigninane.events.AppleSignInEvent;
 import com.tuarua.fre.ANEUtils;
@@ -58,7 +59,7 @@ public class AppleSignInANEContext {
         return id;
     }
 
-    public static function callCallback(callbackId:String, ... args):void {
+    public static function callCallback(callbackId:String, ...args):void {
         var callback:Function = callbacks[callbackId];
         if (callback == null) return;
         callback.apply(null, args);
@@ -85,9 +86,13 @@ public class AppleSignInANEContext {
             case AppleSignInEvent.SUCCESS:
                 try {
                     argsAsJSON = JSON.parse(event.code);
-                    var mapped:AppleIDCredential = ANEUtils.map(argsAsJSON.appleIDCredential,
-                            AppleIDCredential) as AppleIDCredential;
-                    AppleSignInANE.appleSignIn.dispatchEvent(new AppleSignInEvent(event.level, mapped));
+                    if (argsAsJSON.hasOwnProperty("appleIDCredential")) {
+                        AppleSignInANE.appleSignIn.dispatchEvent(new AppleSignInEvent(event.level,
+                                ANEUtils.map(argsAsJSON.appleIDCredential, AppleIDCredential) as AppleIDCredential));
+                    } else {
+                        AppleSignInANE.appleSignIn.dispatchEvent(new AppleSignInEvent(event.level,
+                                null, ANEUtils.map(argsAsJSON.passwordCredential, PasswordCredential) as PasswordCredential));
+                    }
                 } catch (e:Error) {
                     trace(e.toString())
                 }

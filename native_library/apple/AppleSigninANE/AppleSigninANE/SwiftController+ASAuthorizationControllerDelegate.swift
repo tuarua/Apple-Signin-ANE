@@ -29,6 +29,9 @@ import AuthenticationServices
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             self.dispatchEvent(name: AppleSignInEvent.success,
                                value: AppleSignInEvent(appleIDCredential: credential).toJSONString())
+        } else if let credential = authorization.credential as? ASPasswordCredential {
+            self.dispatchEvent(name: AppleSignInEvent.success,
+                               value: AppleSignInEvent(passwordCredential: credential).toJSONString())
         }
     }
 }
