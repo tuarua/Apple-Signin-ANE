@@ -70,13 +70,17 @@ From the command line cd into /example-desktop and run:
 bash get_dependencies.sh
 ```
 
+### App Setup
+
+As per iOS above.
+
 ### Building the App
 
 Apple Sign In requires you to build a captive runtime release (.app) and then make some modifications.
 
 #### Remove some AIR files
 
-Remove the following files from _Main.app/_
+Remove the following files/folders from _Main.app/_
 
 - Contents/Frameworks/Adobe AIR.framework/Versions/1.0/Resources/__MACOSX/
 - Contents/Frameworks/Adobe AIR.framework/Versions/1.0/Resources/WebKit.dylib
@@ -90,7 +94,7 @@ Add the following entries to _Contents/Info.plist_
 
 ```xml
 <key>CFBundleVersion</key>
-<string>x.y.z</string>
+<string>1.0.0</string>
 <key>CFBundleIconFile</key>
 <string>AppIcon</string>
 <key>CFBundleIconName</key>
