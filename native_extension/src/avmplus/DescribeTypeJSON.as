@@ -20,7 +20,7 @@ package avmplus {
  *
  */
 
-/**
+/** @private
  * Makes the hidden, unofficial function describeTypeJSON available outside of the avmplus
  * package.
  *
