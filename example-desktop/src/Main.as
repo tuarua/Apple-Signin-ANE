@@ -23,7 +23,6 @@ import views.SimpleButton;
 
 [SWF(width="800", height="600", frameRate="60", backgroundColor="#FFFFFF")]
 public class Main extends Sprite {
-    private var hasActivated:Boolean;
     private var freSwiftANE:FreSwift = new FreSwift(); // must create before all others
     private var appleSignIn:AppleSignInANE;
     public static const FONT:Font = new FiraSansSemiBold();

@@ -123,7 +123,7 @@ Open _bin-release/Entitlements.entitlements_ and update the 2 **XXXXXXXX** with 
 	<key>com.apple.security.get-task-allow</key>
 	<true/>
 	<key>com.apple.application-identifier</key>
-	<string>XXXXXXXX.com.tuarua.AppleSignInANE.ExampleMac</string>
+	<string>XXXXXXXX.your.app.id</string>
 </dict>
 </plist>
 ```
@@ -139,6 +139,11 @@ codesign -f -s "[Mac Developer: Team] (XXXXXXXX)" --entitlements Entitlements.en
 ```
 
 #### Run the app!
+
+#### Notarizing the app
+See this useful blog
+[https://www.molleindustria.org/blog/notarizing-your-flashair-applications-for-macos/](https://www.molleindustria.org/blog/notarizing-your-flashair-applications-for-macos/)
+
 
 ### Prerequisites
 
