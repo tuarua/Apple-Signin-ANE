@@ -4,7 +4,9 @@
 # Build and Release Folders
 bin/
 bin-debug/
-bin-release/
+bin-release/*
+!bin-release/Entitlements.entitlements
+
 bin-release-temp/
 cache/
 EntitlementsTR.entitlements
