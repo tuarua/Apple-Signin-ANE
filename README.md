@@ -10,7 +10,7 @@ Apple Sign In Adobe Air Native Extension for macOS 10.15+, iOS 13.0+ and tvOS 13
 
 N.B. You must use a Mac to build an iOS app using this ANE. Windows is NOT supported.
 
-From the command line cd into /example-mobile and run:
+From Terminal cd into /example-mobile and run:
 
 ```shell
 bash get_ios_dependencies.sh
@@ -20,7 +20,7 @@ After the ipa is created unzip it and confirm there is a "Frameworks" folder in 
 
 ### App Setup
 
-Set up your app with [Apple Sign in](https://help.apple.com/developer-account/?lang=en#/devde676e696)
+Set up your app with [Apple Sign in](https://help.apple.com/developer-account/?lang=en#/devde676e696).
 
 You will also need to include the following in your app manifest. Update accordingly.
 
@@ -45,7 +45,7 @@ Update XXXXXXXX with your Apple team identifier
 
 N.B. You must use a Mac to build an tvOS app using this ANE. Windows is NOT supported.
 
-From the command line cd into /example-tvos and run:
+From Terminal cd into /example-tvos and run:
 
 ```shell
 bash get_tvos_dependencies.sh
@@ -64,7 +64,7 @@ As per iOS above.
 
 ### The ANE + Dependencies
 
-From the command line cd into /example-desktop and run:
+From Terminal cd into /example-desktop and run:
 
 ```shell
 bash get_dependencies.sh
@@ -72,84 +72,31 @@ bash get_dependencies.sh
 
 ### App Setup
 
-As per iOS above.
+Set up your app with [Apple Sign in](https://help.apple.com/developer-account/?lang=en#/devde676e696).
 
 ### Building the App
 
-Apple Sign In requires you to build a captive runtime release (.app) and then make some modifications.
+Even to run locally, Apple Sign In requires you to build a captive runtime release (.app) and sign it. This should be done with a Mac Developer Certificate and Provisioning Profile.
 
-#### Remove some AIR files
+Open */example-desktop/packaging/sign.sh* and modify the values at the top of the file to your own.
 
-Remove the following files/folders from _Main.app/_
+Copy your .provisionprofile into */example-desktop/packaging* and rename as *MacDeveloper.provisionprofile*
 
-- Contents/Frameworks/Adobe AIR.framework/Versions/1.0/Resources/__MACOSX/
-- Contents/Frameworks/Adobe AIR.framework/Versions/1.0/Resources/WebKit.dylib
-- Contents/Frameworks/Adobe AIR.framework/Versions/1.0/Resources/WebKit/
-- Contents/Frameworks/Adobe AIR.framework/Versions/1.0/Resources/Flash Player.plugin
-- Contents/Frameworks/Adobe AIR.framework/Versions/1.0/Resources/Adobe AIR.vch
-
-#### Update Info.plist
-
-Add the following entries to _Contents/Info.plist_
-
-```xml
-<key>CFBundleVersion</key>
-<string>1.0.0</string>
-<key>CFBundleIconFile</key>
-<string>AppIcon</string>
-<key>CFBundleIconName</key>
-<string>AppIcon</string>
-```
-
-#### Update Entitlements
-
-Open _bin-release/Entitlements.entitlements_ and update the 2 **XXXXXXXX** with your **Apple Team Identiifer**.
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>com.apple.developer.applesignin</key>
-	<array>
-		<string>Default</string>
-	</array>
-	<key>com.apple.developer.team-identifier</key>
-	<string>XXXXXXXX</string>
-	<key>com.apple.security.app-sandbox</key>
-	<true/>
-	<key>com.apple.security.files.user-selected.read-only</key>
-	<true/>
-	<key>com.apple.security.get-task-allow</key>
-	<true/>
-	<key>com.apple.application-identifier</key>
-	<string>XXXXXXXX.your.app.id</string>
-</dict>
-</plist>
-```
-
-#### Sign the app
-
-Update with your Mac Developer cert signature and run in **Terminal**
+From the command line cd into */example-desktop/packaging* and run:
 
 ```shell
-codesign -f -s "[Mac Developer: Team] (XXXXXXXX)" --deep --verbose Main.app/Contents/Frameworks/*
-codesign -f -s "[Mac Developer: Team] (XXXXXXXX)" --deep --verbose Main.app/Contents/Resources/*
-codesign -f -s "[Mac Developer: Team] (XXXXXXXX)" --entitlements Entitlements.entitlements --verbose Main.app/Contents/MacOS/*
+bash sign.sh
 ```
 
-#### Run the app!
-
-#### Notarizing the app
-See this useful blog
-[https://www.molleindustria.org/blog/notarizing-your-flashair-applications-for-macos/](https://www.molleindustria.org/blog/notarizing-your-flashair-applications-for-macos/)
-
+#### Mac App Store and self distributed apps
+Apple Sign In is **ONLY SUPPORTED** in apps which are distributed in the App Store.
+ 
+See [Supported capabilities (macOS)](https://help.apple.com/developer-account/#/devadf555df9)
 
 ### Prerequisites
 
-You will need:
-- a Mac. Windows is not supported
-- IntelliJ IDEA
-- AIR 33.0.2.338+
-- Xcode 11.3
-- [wget](http://rudix.org/packages/wget.html) on macOS
+* a Mac. Windows is not supported
+* IntelliJ IDEA
+* AIR 33.0.2.338+
+* Xcode 11.3
+* [wget](http://rudix.org/packages/wget.html) on macOS
