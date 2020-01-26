@@ -7,6 +7,13 @@ bin-debug/
 bin-release/*
 !bin-release/Entitlements.entitlements
 
+/packaging/*.app
+/packaging/*.pkg
+/packaging/*.provisionprofile
+/packaging/sign_playground.sh
+/packaging/signTR.sh
+/packaging/Assets.xcassets/AppIcon.appiconset/*.png
+
 bin-release-temp/
 cache/
 EntitlementsTR.entitlements
