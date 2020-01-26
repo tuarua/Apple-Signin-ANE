@@ -25,12 +25,7 @@
             <entry key="compiler.debug.swf" value="true" />
           </map>
         </compiler-options>
-        <packaging-air-desktop use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/Main-app.xml" package-file-name="Main">
-          <files-to-package>
-            <FilePathAndPathInPackage file-path="$MODULE_DIR$/src/Assets.car" path-in-package="Assets.car" />
-            <FilePathAndPathInPackage file-path="$MODULE_DIR$/src/AppIcon.icns" path-in-package="AppIcon.icns" />
-          </files-to-package>
-        </packaging-air-desktop>
+        <packaging-air-desktop use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/Main-app.xml" package-file-name="Main" />
         <packaging-android />
         <packaging-ios />
       </configuration>

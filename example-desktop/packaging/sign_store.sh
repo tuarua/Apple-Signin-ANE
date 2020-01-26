@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Code Signature invalid error is expected if you try and run your store app on your mac without uploading it.
+# See https://developer.apple.com/library/archive/qa/qa1884/_index.html
+
 # Name of your app.
 APP="Main"
 APP_VERSION="1.2.0"
@@ -10,8 +13,14 @@ TEAM_ID="XXXXXXXX"
 APP_CATEGORY="public.app-category.games"
 
 # Certificates and signing.
-APP_KEY="Mac Developer: Xxxx Xxxx (XXXXXXXX)"
-PROVISION_PROFILE="MacDeveloper.provisionprofile"
+APP_KEY="3rd Party Mac Developer Application: Xxxx Xxxx (XXXXXXXX)"
+INSTALLER_KEY="3rd Party Mac Developer Installer: Xxxx Xxxx (XXXXXXXX)"
+PROVISION_PROFILE="AppStoreDeveloper.provisionprofile"
+
+# from https://appleid.apple.com/#!&page=signin
+TWO_FAC_UN="USER_NAME"
+TWO_FAC_PW="PASSWORD"
+
 
 ############################################################################################################
 ############################################################################################################
@@ -35,7 +44,7 @@ fi
 
 echo ${cyn}"Copying $APP.app" ${white}
 
-if [ ! -f "$pathtome/../bin-release/$APP.app" ]; then
+if [ ! -d "$pathtome/../bin-release/$APP.app" ]; then
 echo ${red}"Can't find bin-release/$APP.app. Package your AIR app!" ${white}
 exit
 fi
@@ -140,7 +149,7 @@ echo ${cyn}"Signing" ${white}
 
 codesign -f -s "$APP_KEY" --deep --entitlements "$CHILD_ENTITLEMENTS" --options runtime --timestamp $APP.app/Contents/Frameworks/*
 codesign -f -s "$APP_KEY" --deep --entitlements "$CHILD_ENTITLEMENTS" --options runtime --timestamp $APP.app/Contents/Resources/META-INF/AIR/extensions/*/META-INF/ANE/MacOS-x86-64/*.framework
-codesign -f -s "$APP_KEY" --deep --entitlements "$CHILD_ENTITLEMENTS" --options runtime --timestamp $APP.app/Contents/Resources/META-INF/AIR/extensions/*/META-INF/ANE/MacOS-x86-64/*.framework/Frameworks/*
+codesign -f -s "$APP_KEY" --deep --entitlements "$CHILD_ENTITLEMENTS" --options runtime --timestamp $APP.app/Contents/Resources/META-INF/AIR/extensions/*/META-INF/ANE/MacOS-x86-64/*.framework/Versions/Current/Frameworks/*
 codesign -f -s "$APP_KEY" --entitlements "$ROOT_ENTITLEMENTS" --options runtime --timestamp $APP.app
 
 $PlistBuddy -c "Set :com.apple.developer.team-identifier XXX" $ROOT_ENTITLEMENTS
@@ -152,5 +161,15 @@ echo ${cyn}"Verify codesign" ${white}
 codesign -vvv --deep --strict $APP.app
 codesign -vvv --deep --strict $APP.app/Contents/Resources/META-INF/AIR/extensions/*/META-INF/ANE/MacOS-x86-64/*.framework
 codesign -vvv --deep --strict $APP.app/Contents/Resources/META-INF/AIR/extensions/*/META-INF/ANE/MacOS-x86-64/*
+
+echo ${cyn}"Building .pkg" ${white}
+
+rm -r "$APP.pkg"
+
+productbuild --component "$APP.app" /Applications --sign "$INSTALLER_KEY" "$APP.pkg"
+
+echo ${cyn}"Validate app" ${white}
+
+xcrun altool -t osx -f "$APP.pkg" --primary-bundle-id "$BUNDLE_ID" --verbose  --validate-app -u "$TWO_FAC_UN" -p "$TWO_FAC_PW"
 
 echo ${grn}"Complete" ${white}
