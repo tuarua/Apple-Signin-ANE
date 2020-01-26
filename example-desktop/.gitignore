@@ -12,6 +12,7 @@ bin-release/*
 /packaging/*.provisionprofile
 /packaging/sign_playground.sh
 /packaging/signTR.sh
+/packaging/signTR_store.sh
 /packaging/Assets.xcassets/AppIcon.appiconset/*.png
 
 bin-release-temp/

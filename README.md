@@ -93,6 +93,12 @@ Apple Sign In is **ONLY SUPPORTED** in apps which are distributed in the App Sto
  
 See [Supported capabilities (macOS)](https://help.apple.com/developer-account/#/devadf555df9)
 
+A bash script is provided to create a signed pkg ready for the App Store. Follow the same steps as above with your 3rd Party Mac Developer Certificate and Provisioning Profile.
+
+```shell
+bash sign_store.sh
+```
+
 ### Prerequisites
 
 * a Mac. Windows is not supported
