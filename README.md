@@ -82,7 +82,7 @@ Open */example-desktop/packaging/sign.sh* and modify the values at the top of th
 
 Copy your .provisionprofile into */example-desktop/packaging* and rename as *MacDeveloper.provisionprofile*
 
-From the command line cd into */example-desktop/packaging* and run:
+From Terminal cd into */example-desktop/packaging* and run:
 
 ```shell
 bash sign.sh
