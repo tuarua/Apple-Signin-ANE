@@ -13,16 +13,15 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.tuarua.applesigninane {
-public class PersonNameComponents {
-    public var namePrefix:String;
-    public var givenName:String;
-    public var middleName:String;
-    public var familyName:String;
-    public var nameSuffix:String;
-    public var nickname:String;
-
-    public function PersonNameComponents() {
-    }
+package com.tuarua.applesignin {
+public final class UserDetectionStatus {
+    /** Not supported on current platform, ignore the value */
+    public static const unsupported:int = 0;
+    /** We could not determine the value.  New users in the ecosystem will get this value as well, so you should
+     * not blacklist but instead treat these users as any new user through standard email sign up flows
+     * */
+    public static const unknown:int = 1;
+    /** A hint that we have high confidence that the user is real. */
+    public static const likelyReal:int = 2;
 }
 }

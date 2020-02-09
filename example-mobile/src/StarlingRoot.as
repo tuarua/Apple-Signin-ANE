@@ -1,12 +1,12 @@
 package {
-import com.tuarua.AppleSignInANE;
-import com.tuarua.applesigninane.AppleIDCredential;
-import com.tuarua.applesigninane.AppleIDProviderCredentialState;
-import com.tuarua.applesigninane.AuthorizationErrorCode;
-import com.tuarua.applesigninane.AuthorizationScope;
-import com.tuarua.applesigninane.UserDetectionStatus;
-import com.tuarua.applesigninane.events.AppleSignInErrorEvent;
-import com.tuarua.applesigninane.events.AppleSignInEvent;
+import com.tuarua.AppleSignIn;
+import com.tuarua.applesignin.AppleIDCredential;
+import com.tuarua.applesignin.AppleIDProviderCredentialState;
+import com.tuarua.applesignin.AuthorizationErrorCode;
+import com.tuarua.applesignin.AuthorizationScope;
+import com.tuarua.applesignin.UserDetectionStatus;
+import com.tuarua.applesignin.events.AppleSignInErrorEvent;
+import com.tuarua.applesignin.events.AppleSignInEvent;
 
 import flash.desktop.NativeApplication;
 import flash.events.Event;
@@ -25,7 +25,7 @@ public class StarlingRoot extends Sprite {
     private var getCredentialStateBtn:SimpleButton = new SimpleButton("Get Credential State");
 
     private var statusLabel:TextField;
-    private var appleSignIn:AppleSignInANE;
+    private var appleSignIn:AppleSignIn;
 
     public function StarlingRoot() {
         super();
@@ -34,8 +34,8 @@ public class StarlingRoot extends Sprite {
     }
 
     public function start():void {
-        appleSignIn = AppleSignInANE.appleSignIn;
-        if (!appleSignIn.isSupported) return;
+        appleSignIn = AppleSignIn.shared();
+        if (!AppleSignIn.isSupported) return;
         appleSignIn.addEventListener(AppleSignInErrorEvent.ERROR, onError);
         appleSignIn.addEventListener(AppleSignInEvent.SUCCESS, onSuccess);
         initMenu();
@@ -154,7 +154,7 @@ public class StarlingRoot extends Sprite {
     }
 
     private function onExiting(event:Event):void {
-        AppleSignInANE.dispose();
+        AppleSignIn.dispose();
     }
 
 

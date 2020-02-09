@@ -13,15 +13,11 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.tuarua.applesigninane {
-public final class UserDetectionStatus {
-    /** Not supported on current platform, ignore the value */
-    public static const unsupported:int = 0;
-    /** We could not determine the value.  New users in the ecosystem will get this value as well, so you should
-     * not blacklist but instead treat these users as any new user through standard email sign up flows
-     * */
-    public static const unknown:int = 1;
-    /** A hint that we have high confidence that the user is real. */
-    public static const likelyReal:int = 2;
+package com.tuarua.applesignin {
+public final class AuthorizationScope {
+    /** A scope that includes the user’s email address.*/
+    public static const email:String = "email";
+    /** A scope that includes the user’s full name. */
+    public static const fullName:String = "full_name";
 }
 }

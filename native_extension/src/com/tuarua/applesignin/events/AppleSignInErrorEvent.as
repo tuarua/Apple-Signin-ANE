@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.tuarua.applesigninane.events {
+package com.tuarua.applesignin.events {
 import flash.events.Event;
 
 public class AppleSignInErrorEvent extends Event {

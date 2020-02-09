@@ -13,11 +13,15 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.tuarua.applesigninane {
-public final class AuthorizationScope {
-    /** A scope that includes the user’s email address.*/
-    public static const email:String = "email";
-    /** A scope that includes the user’s full name. */
-    public static const fullName:String = "full_name";
+
+package com.tuarua.applesignin {
+/** A password credential.*/
+public class PasswordCredential {
+    /** The user for a password credential object. */
+    public var user:String;
+    /** The password for a password credential object. */
+    public var password:String;
+    public function PasswordCredential() {
+    }
 }
 }

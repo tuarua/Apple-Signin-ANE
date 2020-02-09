@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension xmlns="http://ns.adobe.com/air/extension/24.0">
     <id>com.tuarua.AppleSignInANE</id>
-	<name>Machine Learning ANE</name>
+	<name>Apple Sign In ANE</name>
 	<copyright>This work is licensed under Apache License, Copyright (c) 2018 Tua Rua Ltd.</copyright>
-	<versionNumber>1.2.0</versionNumber>
+	<versionNumber>1.3.0</versionNumber>
     <platforms>
      <platform name="iPhone-ARM">
         <applicationDeployment>

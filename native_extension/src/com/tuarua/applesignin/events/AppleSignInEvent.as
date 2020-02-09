@@ -14,9 +14,9 @@
  *  limitations under the License.
  */
 
-package com.tuarua.applesigninane.events {
-import com.tuarua.applesigninane.PasswordCredential;
-import com.tuarua.applesigninane.AppleIDCredential;
+package com.tuarua.applesignin.events {
+import com.tuarua.applesignin.PasswordCredential;
+import com.tuarua.applesignin.AppleIDCredential;
 import flash.events.Event;
 
 public class AppleSignInEvent extends Event {

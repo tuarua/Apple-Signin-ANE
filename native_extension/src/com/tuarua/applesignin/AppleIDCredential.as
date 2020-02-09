@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.tuarua.applesigninane {
+package com.tuarua.applesignin {
 public class AppleIDCredential {
     /** An opaque user ID associated with the AppleID used for the sign in. This identifier will be stable across
      * the 'developer team', it can later be used as an input to @see ASAuthorizationRequest to request user

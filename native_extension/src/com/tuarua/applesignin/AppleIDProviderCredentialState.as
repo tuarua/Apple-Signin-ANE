@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.tuarua.applesigninane {
+package com.tuarua.applesignin {
 /** Authorization state of an Apple ID credential.*/
 public final class AppleIDProviderCredentialState {
     /** The Opaque user ID was revoked by the user.*/
