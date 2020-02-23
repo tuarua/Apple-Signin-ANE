@@ -151,7 +151,7 @@ public class Main extends Sprite {
     }
 
     private function onExiting(event:Event):void {
-        freSwiftANE.dispose();
+        FreSwift.dispose();
         AppleSignIn.dispose();
     }
 }

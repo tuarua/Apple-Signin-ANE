@@ -105,4 +105,4 @@ bash sign_store.sh
 * IntelliJ IDEA
 * AIR 33.0.2.338+
 * Xcode 11.3
-* [wget](http://rudix.org/packages/wget.html) on macOS
+* wget on macOS via `brew install wget`
