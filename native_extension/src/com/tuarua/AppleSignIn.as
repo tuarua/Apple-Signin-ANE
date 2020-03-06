@@ -20,19 +20,19 @@ import com.tuarua.utils.os;
 
 import flash.events.EventDispatcher;
 
-public class AppleSignInANE extends EventDispatcher {
-    private static var _appleSignIn:AppleSignInANE;
+public class AppleSignIn extends EventDispatcher {
+    private static var _shared:AppleSignIn;
 
     /** @private */
-    public function AppleSignInANE() {
-        if (_appleSignIn) {
+    public function AppleSignIn() {
+        if (_shared) {
             throw new Error(AppleSignInANEContext.NAME + " is a singleton, use .appleSignIn");
         }
         if (AppleSignInANEContext.context) {
-            var theRet:* = AppleSignInANEContext.context.call("init");
-            if (theRet is ANEError) throw theRet as ANEError;
+            var ret:* = AppleSignInANEContext.context.call("init");
+            if (ret is ANEError) throw ret as ANEError;
         }
-        _appleSignIn = this;
+        _shared = this;
     }
 
     /**
@@ -59,17 +59,17 @@ public class AppleSignInANE extends EventDispatcher {
     }
 
     /** The ANE instance. */
-    public static function get appleSignIn():AppleSignInANE {
-        if (!_appleSignIn) {
-            new AppleSignInANE();
+    public static function shared():AppleSignIn {
+        if (!_shared) {
+            new AppleSignIn();
         }
-        return _appleSignIn;
+        return _shared;
     }
 
     /**
      * Returns whether Apple Sign In is supported on the OS and version
      */
-    public function get isSupported():Boolean {
+    public static function get isSupported():Boolean {
         if (os.isIos && os.majorVersion >= 13) return true;
         if (os.isTvos && os.majorVersion >= 13) return true;
         if (os.isMacos && os.majorVersion >= 10 && os.minorVersion >= 15) return true;

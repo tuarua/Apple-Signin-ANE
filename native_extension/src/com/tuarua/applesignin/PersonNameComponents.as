@@ -13,15 +13,16 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+package com.tuarua.applesignin {
+public class PersonNameComponents {
+    public var namePrefix:String;
+    public var givenName:String;
+    public var middleName:String;
+    public var familyName:String;
+    public var nameSuffix:String;
+    public var nickname:String;
 
-package com.tuarua.applesigninane {
-/** A password credential.*/
-public class PasswordCredential {
-    /** The user for a password credential object. */
-    public var user:String;
-    /** The password for a password credential object. */
-    public var password:String;
-    public function PasswordCredential() {
+    public function PersonNameComponents() {
     }
 }
 }

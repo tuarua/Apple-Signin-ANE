@@ -15,10 +15,10 @@
  */
 
 package com.tuarua {
-import com.tuarua.applesigninane.AppleIDCredential;
-import com.tuarua.applesigninane.PasswordCredential;
-import com.tuarua.applesigninane.events.AppleSignInErrorEvent;
-import com.tuarua.applesigninane.events.AppleSignInEvent;
+import com.tuarua.applesignin.AppleIDCredential;
+import com.tuarua.applesignin.PasswordCredential;
+import com.tuarua.applesignin.events.AppleSignInErrorEvent;
+import com.tuarua.applesignin.events.AppleSignInEvent;
 import com.tuarua.fre.ANEUtils;
 
 import flash.events.StatusEvent;
@@ -77,7 +77,7 @@ public class AppleSignInANEContext {
                     argsAsJSON = JSON.parse(event.code);
                     if (argsAsJSON.hasOwnProperty("error")) {
                         error = new Error(argsAsJSON.error.message, argsAsJSON.error.code);
-                        AppleSignInANE.appleSignIn.dispatchEvent(new AppleSignInErrorEvent(event.level, error));
+                        AppleSignIn.shared().dispatchEvent(new AppleSignInErrorEvent(event.level, error));
                     }
                 } catch (e:Error) {
                     trace(e.toString())
@@ -87,10 +87,10 @@ public class AppleSignInANEContext {
                 try {
                     argsAsJSON = JSON.parse(event.code);
                     if (argsAsJSON.hasOwnProperty("appleIDCredential")) {
-                        AppleSignInANE.appleSignIn.dispatchEvent(new AppleSignInEvent(event.level,
+                        AppleSignIn.shared().dispatchEvent(new AppleSignInEvent(event.level,
                                 ANEUtils.map(argsAsJSON.appleIDCredential, AppleIDCredential) as AppleIDCredential));
                     } else {
-                        AppleSignInANE.appleSignIn.dispatchEvent(new AppleSignInEvent(event.level,
+                        AppleSignIn.shared().dispatchEvent(new AppleSignInEvent(event.level,
                                 null, ANEUtils.map(argsAsJSON.passwordCredential, PasswordCredential) as PasswordCredential));
                     }
                 } catch (e:Error) {

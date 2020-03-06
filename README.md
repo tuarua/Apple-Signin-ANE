@@ -82,7 +82,7 @@ Open */example-desktop/packaging/sign.sh* and modify the values at the top of th
 
 Copy your .provisionprofile into */example-desktop/packaging* and rename as *MacDeveloper.provisionprofile*
 
-From the command line cd into */example-desktop/packaging* and run:
+From Terminal cd into */example-desktop/packaging* and run:
 
 ```shell
 bash sign.sh
@@ -105,4 +105,4 @@ bash sign_store.sh
 * IntelliJ IDEA
 * AIR 33.0.2.338+
 * Xcode 11.3
-* [wget](http://rudix.org/packages/wget.html) on macOS
+* wget on macOS via `brew install wget`

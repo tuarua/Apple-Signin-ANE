@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.tuarua.applesigninane {
+package com.tuarua.applesignin {
 public final class AuthorizationErrorCode {
     public static const unknown:int = 1000;
     public static const canceled:int = 1001;

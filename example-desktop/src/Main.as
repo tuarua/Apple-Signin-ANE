@@ -1,12 +1,12 @@
 package {
 
-import com.tuarua.AppleSignInANE;
+import com.tuarua.AppleSignIn;
 import com.tuarua.FreSwift;
-import com.tuarua.applesigninane.AppleIDProviderCredentialState;
-import com.tuarua.applesigninane.AuthorizationErrorCode;
-import com.tuarua.applesigninane.AuthorizationScope;
-import com.tuarua.applesigninane.events.AppleSignInErrorEvent;
-import com.tuarua.applesigninane.events.AppleSignInEvent;
+import com.tuarua.applesignin.AppleIDProviderCredentialState;
+import com.tuarua.applesignin.AuthorizationErrorCode;
+import com.tuarua.applesignin.AuthorizationScope;
+import com.tuarua.applesignin.events.AppleSignInErrorEvent;
+import com.tuarua.applesignin.events.AppleSignInEvent;
 
 import flash.desktop.NativeApplication;
 import flash.display.Sprite;
@@ -24,7 +24,7 @@ import views.SimpleButton;
 [SWF(width="800", height="600", frameRate="60", backgroundColor="#FFFFFF")]
 public class Main extends Sprite {
     private var freSwiftANE:FreSwift = new FreSwift(); // must create before all others
-    private var appleSignIn:AppleSignInANE;
+    private var appleSignIn:AppleSignIn;
     public static const FONT:Font = new FiraSansSemiBold();
     private var statusLabel:TextField = new TextField();
 
@@ -62,19 +62,19 @@ public class Main extends Sprite {
         getCredentialStateBtn.x = (stage.stageWidth - getCredentialStateBtn.width) / 2;
         getCredentialStateBtn.y = signInBtn.y + 80;
 
-        appleSignIn = AppleSignInANE.appleSignIn;
-        if (appleSignIn.isSupported) {
-            appleSignIn.addEventListener(AppleSignInErrorEvent.ERROR, onError);
-            appleSignIn.addEventListener(AppleSignInEvent.SUCCESS, onSuccess);
-            addChild(signInBtn);
-            addChild(getCredentialStateBtn);
-        } else {
-            statusLabel.text = "Apple Sign In is only supported on MacOS 10.15+";
-        }
-
         statusLabel.y = getCredentialStateBtn.y + 80;
         addChild(statusLabel);
 
+        appleSignIn = AppleSignIn.shared();
+        if (!AppleSignIn.isSupported) {
+            statusLabel.text = "Apple Sign In is only supported on MacOS 10.15+";
+            return;
+        }
+
+        appleSignIn.addEventListener(AppleSignInErrorEvent.ERROR, onError);
+        appleSignIn.addEventListener(AppleSignInEvent.SUCCESS, onSuccess);
+        addChild(signInBtn);
+        addChild(getCredentialStateBtn);
     }
 
     private function onSignInClick(event:MouseEvent):void {
@@ -82,41 +82,40 @@ public class Main extends Sprite {
     }
 
     private function onGetCredentialStateClick(event:MouseEvent):void {
-        appleSignIn.getCredentialState("x.x.x",
-                function (state:int, error:Error = null):void {
-                    if (error) {
-                        statusLabel.text = "Credential Error: " + error.message + "\nReason: ";
-                        switch (error.errorID) {
-                            case AuthorizationErrorCode.unknown:
-                                statusLabel.text += "Unknown";
-                                break;
-                            case AuthorizationErrorCode.canceled:
-                                statusLabel.text += "Cancelled";
-                                break;
-                            case AuthorizationErrorCode.failed:
-                                statusLabel.text += "Failed";
-                                break;
-                            case AuthorizationErrorCode.invalidResponse:
-                                statusLabel.text += "Invalid Response";
-                                break;
-                            case AuthorizationErrorCode.notHandled:
-                                statusLabel.text += "Not handled";
-                                break;
-                        }
-                        return;
-                    }
-                    switch (state) {
-                        case AppleIDProviderCredentialState.authorized:
-                            statusLabel.text = "Credential: Authorized";
-                            break;
-                        case AppleIDProviderCredentialState.notFound:
-                            statusLabel.text = "Credential: Not Found";
-                            break;
-                        case AppleIDProviderCredentialState.revoked:
-                            statusLabel.text = "Credential: Revoked";
-                            break;
-                    }
-                });
+        appleSignIn.getCredentialState("x.x.x", function (state:int, error:Error = null):void {
+            if (error) {
+                statusLabel.text = "Credential Error: " + error.message + "\nReason: ";
+                switch (error.errorID) {
+                    case AuthorizationErrorCode.unknown:
+                        statusLabel.text += "Unknown";
+                        break;
+                    case AuthorizationErrorCode.canceled:
+                        statusLabel.text += "Cancelled";
+                        break;
+                    case AuthorizationErrorCode.failed:
+                        statusLabel.text += "Failed";
+                        break;
+                    case AuthorizationErrorCode.invalidResponse:
+                        statusLabel.text += "Invalid Response";
+                        break;
+                    case AuthorizationErrorCode.notHandled:
+                        statusLabel.text += "Not handled";
+                        break;
+                }
+                return;
+            }
+            switch (state) {
+                case AppleIDProviderCredentialState.authorized:
+                    statusLabel.text = "Credential: Authorized";
+                    break;
+                case AppleIDProviderCredentialState.notFound:
+                    statusLabel.text = "Credential: Not Found";
+                    break;
+                case AppleIDProviderCredentialState.revoked:
+                    statusLabel.text = "Credential: Revoked";
+                    break;
+            }
+        });
     }
 
     private function onSuccess(event:AppleSignInEvent):void {
@@ -152,8 +151,8 @@ public class Main extends Sprite {
     }
 
     private function onExiting(event:Event):void {
-        freSwiftANE.dispose();
-        AppleSignInANE.dispose();
+        FreSwift.dispose();
+        AppleSignIn.dispose();
     }
 }
 }
