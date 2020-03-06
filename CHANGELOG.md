@@ -1,3 +1,6 @@
+### 1.3.0
+- Updated to FreSwift 4.3.0
+
 ### 1.2.0
 - Added is Desktop example
 
