@@ -4,16 +4,27 @@ Apple Sign In Adobe Air Native Extension for macOS 10.15+, iOS 13.0+ and tvOS 13
 
 -------------
 
+## Prerequisites
+
+You will need:
+
+- IntelliJ IDEA
+- AIR 33.1.1.217+
+- [.Net Core Runtime](https://dotnet.microsoft.com/download/dotnet-core/3.1)
+- [AIR-Tools](https://github.com/tuarua/AIR-Tools/)
+
+-------------
+
 ## iOS
 
 ### The ANE + Dependencies
 
-N.B. You must use a Mac to build an iOS app using this ANE. Windows is NOT supported.
+>N.B. You must use a Mac to build an iOS app using this ANE. Windows is **NOT** supported.
 
-From Terminal cd into /example-mobile and run:
+From Terminal cd into /example-mobile and run the _"air-tools"_ command (You will need [AIR-Tools](https://github.com/tuarua/AIR-Tools/) installed)
 
-```shell
-bash get_ios_dependencies.sh
+```bash
+air-tools install
 ```
 This folder, ios_dependencies/device/Frameworks, must be packaged as part of your app when creating the ipa. How this is done will depend on the IDE you are using.
 After the ipa is created unzip it and confirm there is a "Frameworks" folder in the root of the .app package.
@@ -22,33 +33,17 @@ After the ipa is created unzip it and confirm there is a "Frameworks" folder in 
 
 Set up your app with [Apple Sign in](https://help.apple.com/developer-account/?lang=en#/devde676e696).
 
-You will also need to include the following in your app manifest. Update accordingly.
-
-Update XXXXXXXX with your Apple team identifier
-
-```xml
-<Entitlements>
-    <![CDATA[
-    <key>com.apple.developer.applesignin</key>
-    <array>
-        <string>Default</string>
-    </array>
-    <key>com.apple.developer.team-identifier</key>
-    <string>XXXXXXXX</string>
-    ]]>
-</Entitlements>
-```
 
 ## tvOS
 
 ### The ANE + Dependencies
 
-N.B. You must use a Mac to build an tvOS app using this ANE. Windows is NOT supported.
+>N.B. You must use a Mac to build an iOS app using this ANE. Windows is **NOT** supported.
 
 From Terminal cd into /example-tvos and run:
 
-```shell
-bash get_tvos_dependencies.sh
+```bash
+air-tools install
 ```
 
 This folder, tvos_dependencies/device/Frameworks, must be packaged as part of your app when creating the ipa. How this is done will depend on the IDE you are using.
@@ -66,8 +61,8 @@ As per iOS above.
 
 From Terminal cd into /example-desktop and run:
 
-```shell
-bash get_dependencies.sh
+```bash
+air-tools install
 ```
 
 ### App Setup
@@ -98,11 +93,3 @@ A bash script is provided to create a signed pkg ready for the App Store. Follow
 ```shell
 bash sign_store.sh
 ```
-
-### Prerequisites
-
-* a Mac. Windows is not supported
-* IntelliJ IDEA
-* AIR 33.0.2.338+
-* Xcode 11.3
-* wget on macOS via `brew install wget`
