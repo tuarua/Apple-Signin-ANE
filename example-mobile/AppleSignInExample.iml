@@ -11,6 +11,9 @@
             <entry library-name="AppleSignInANE" library-level="project">
               <dependency linkage="Merged" />
             </entry>
+            <entry library-name="extensions" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
           </entries>
           <sdk name="AIRSDK_33.1.1.217" />
         </dependencies>
@@ -32,7 +35,7 @@
             <entry library-name="starling" library-level="project">
               <dependency linkage="Merged" />
             </entry>
-            <entry library-name="AppleSignInANE" library-level="project">
+            <entry library-name="extensions" library-level="project">
               <dependency linkage="Merged" />
             </entry>
           </entries>
@@ -66,5 +69,6 @@
     <orderEntry type="library" exported="" name="FiraSansSemiBold" level="project" />
     <orderEntry type="library" exported="" name="MLANE" level="project" />
     <orderEntry type="library" exported="" name="AppleSignInANE" level="project" />
+    <orderEntry type="library" exported="" name="extensions" level="project" />
   </component>
 </module>

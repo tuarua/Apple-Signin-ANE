@@ -1,27 +1,43 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <application xmlns="http://ns.adobe.com/air/application/32.0">
-    <id>com.tuarua.AppleSignInANE.ExampleMac</id>
-    <filename>Main</filename>
-    <name>Main</name>
-    <versionNumber>1.4.0</versionNumber>
-
-    <!-- Identifies the ActionScript extensions used by an application. -->
-    <extensions>
-        <extensionID>com.tuarua.FreSwift</extensionID>
-        <extensionID>com.tuarua.AppleSignInANE</extensionID>
-    </extensions>
-
-    <!-- Settings for the application's initial window. Required. -->
-    <initialWindow>
-        <!-- The main SWF or HTML file of the application. Required. -->
-        <content>SWF file name is set automatically at compile time</content>
-        <requestedDisplayResolution>high</requestedDisplayResolution>
-        <depthAndStencil>true</depthAndStencil>
-        <renderMode>direct</renderMode>
-        <autoOrients>false</autoOrients>
-        <fullScreen>false</fullScreen>
-        <visible>true</visible>
-    </initialWindow>
-
-
+  <id>com.tuarua.AppleSignInANE.ExampleMac</id>
+  <filename>Main</filename>
+  <name>Main</name>
+  <versionNumber>1.4.0</versionNumber>
+  <!-- Identifies the ActionScript extensions used by an application. -->
+  <extensions>
+    <extensionID>com.tuarua.AppleSignInANE</extensionID>
+    <extensionID>com.tuarua.FreSwift</extensionID>
+  </extensions>
+  <!-- Settings for the application's initial window. Required. -->
+  <initialWindow>
+    <!-- The main SWF or HTML file of the application. Required. -->
+    <content>SWF file name is set automatically at compile time</content>
+    <requestedDisplayResolution>high</requestedDisplayResolution>
+    <depthAndStencil>true</depthAndStencil>
+    <renderMode>direct</renderMode>
+    <autoOrients>false</autoOrients>
+    <fullScreen>false</fullScreen>
+    <visible>true</visible>
+  </initialWindow>
+  <iPhone>
+    <requestedDisplayResolution>high</requestedDisplayResolution>
+    <InfoAdditions><![CDATA[
+	<key>MinimumOSVersion</key>
+	<string>9.0</string>
+	<key>UIDeviceFamily</key>
+	<array>
+		<string>1</string>
+		<string>2</string>
+	</array>
+]]></InfoAdditions>
+    <Entitlements><![CDATA[
+	<key>com.apple.developer.applesignin</key>
+	<array>
+		<string>Default</string>
+	</array>
+	<key>com.apple.developer.team-identifier</key>
+	<string>XXXXXX</string>
+]]></Entitlements>
+  </iPhone>
 </application>

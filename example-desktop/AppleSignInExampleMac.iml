@@ -5,16 +5,13 @@
       <configuration name="AppleSignInExampleMac" target-platform="Desktop" pure-as="true" main-class="Main" output-file="Main.swf" output-folder="$MODULE_DIR$/bin-release">
         <dependencies target-player="32.0">
           <entries>
-            <entry library-name="FreSwift" library-level="project">
-              <dependency linkage="Merged" />
-            </entry>
-            <entry library-name="AppleSignInANE" library-level="project">
-              <dependency linkage="Merged" />
-            </entry>
             <entry library-name="FiraSansSemiBold" library-level="project">
               <dependency linkage="Merged" />
             </entry>
             <entry library-name="greensock" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="extensions" library-level="project">
               <dependency linkage="Merged" />
             </entry>
           </entries>
@@ -43,5 +40,6 @@
     <orderEntry type="library" exported="" name="FreSwift" level="project" />
     <orderEntry type="library" exported="" name="FiraSansSemiBold" level="project" />
     <orderEntry type="library" exported="" name="greensock" level="project" />
+    <orderEntry type="library" exported="" name="extensions" level="project" />
   </component>
 </module>
