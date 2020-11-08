@@ -1,3 +1,6 @@
+### 1.6.0
+- Updated to FreSwift 5.0.0
+
 ### 1.5.0
 - Updated to FreSwift 4.5.0
 

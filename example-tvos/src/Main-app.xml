@@ -4,7 +4,7 @@
     <id>com.tuarua.AppleSignInANE.Example</id>
     <filename>Main</filename>
     <name>AppleSignInANEExample</name>
-    <versionNumber>1.4.0</versionNumber>
+    <versionNumber>1.6.0</versionNumber>
 
     <!-- Identifies the ActionScript extensions used by an application. -->
     <extensions>
@@ -51,7 +51,7 @@
                 <string>Default</string>
             </array>
             <key>com.apple.developer.team-identifier</key>
-            <string>FWEQJ32FGC</string>
+            <string>XXXXXX</string>
             ]]>
         </Entitlements>
 

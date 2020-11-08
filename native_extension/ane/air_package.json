@@ -1,14 +1,14 @@
 {
   "name": "com.tuarua.AppleSignInANE",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "repository": {
     "url": "https://tuarua.github.io/air/air_packages.json"
   },
   "dependencies": {
-    "com.tuarua.FreSwift": "4.5.0",
-    "com.tuarua.iOS.FreSwift": "4.5.0",
-    "com.tuarua.tvOS.FreSwift": "4.5.0",
-    "com.tuarua.AppleSignInANE.IosDependencies": "1.5.0",
-    "com.tuarua.AppleSignInANE.TvosDependencies": "1.5.0"
+    "com.tuarua.FreSwift": "5.0.0",
+    "com.tuarua.iOS.FreSwift": "5.0.0",
+    "com.tuarua.tvOS.FreSwift": "5.0.0",
+    "com.tuarua.AppleSignInANE.IosDependencies": "1.6.0",
+    "com.tuarua.AppleSignInANE.TvosDependencies": "1.6.0"
   }
 }
