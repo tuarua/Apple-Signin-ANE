@@ -8,7 +8,7 @@ PROJECTNAME=AppleSignInANE
 fwSuffix="_FW"
 libSuffix="_LIB"
 
-AIR_SDK="/Users/eoinlandy/SDKs/AIRSDK_33.1.1.300"
+AIR_SDK="/Users/eoinlandy/SDKs/AIRSDK_33.1.1.345"
 
 ##############################################################################
 
@@ -127,6 +127,15 @@ rm "$FWPATH/libswiftQuartzCore.dylib"
 fi
 if [ -f "$FWPATH/libswiftXPC.dylib" ]; then
 rm "$FWPATH/libswiftXPC.dylib"
+fi
+if [ -f "$FWPATH/libswiftCloudKit.dylib" ]; then
+rm "$FWPATH/libswiftCloudKit.dylib"
+fi
+if [ -f "$FWPATH/libswiftContacts.dylib" ]; then
+rm "$FWPATH/libswiftContacts.dylib"
+fi
+if [ -f "$FWPATH/libswiftCoreLocation.dylib" ]; then
+rm "$FWPATH/libswiftCoreLocation.dylib"
 fi
 
 #Copy native libraries into place.
