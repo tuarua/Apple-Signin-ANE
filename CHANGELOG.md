@@ -1,3 +1,6 @@
+### 1.8.0
+- support macOS version 10.15 or 11.2 format
+
 ### 1.7.0
 - Updated to FreSwift 5.1.0
 
