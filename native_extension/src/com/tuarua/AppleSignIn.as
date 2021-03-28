@@ -72,7 +72,7 @@ public class AppleSignIn extends EventDispatcher {
     public static function get isSupported():Boolean {
         if (os.isIos && os.majorVersion >= 13) return true;
         if (os.isTvos && os.majorVersion >= 13) return true;
-        if (os.isMacos && os.majorVersion >= 10 && os.minorVersion >= 15) return true;
+        if (os.isMacos && (os.majorVersion >= 11 || (os.majorVersion == 10 && os.minorVersion >= 15))) return true;
         trace("Apple Sign In is iOS13+, macOS10.15+, tvOS13+ only");
         return false;
     }

@@ -3,7 +3,7 @@
   <id>com.tuarua.AppleSignInANE.ExampleMac</id>
   <filename>Main</filename>
   <name>Main</name>
-  <versionNumber>1.6.0</versionNumber>
+  <versionNumber>1.8.0</versionNumber>
   <!-- Identifies the ActionScript extensions used by an application. -->
   <extensions>
     <extensionID>com.tuarua.AppleSignInANE</extensionID>
@@ -20,24 +20,4 @@
     <fullScreen>false</fullScreen>
     <visible>true</visible>
   </initialWindow>
-  <iPhone>
-    <requestedDisplayResolution>high</requestedDisplayResolution>
-    <InfoAdditions><![CDATA[
-	<key>MinimumOSVersion</key>
-	<string>9.0</string>
-	<key>UIDeviceFamily</key>
-	<array>
-		<string>1</string>
-		<string>2</string>
-	</array>
-]]></InfoAdditions>
-    <Entitlements><![CDATA[
-	<key>com.apple.developer.applesignin</key>
-	<array>
-		<string>Default</string>
-	</array>
-	<key>com.apple.developer.team-identifier</key>
-	<string>XXXXXX</string>
-]]></Entitlements>
-  </iPhone>
 </application>

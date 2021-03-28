@@ -49,7 +49,7 @@ public class Main extends Sprite {
         statusLabel.antiAliasType = AntiAliasType.ADVANCED;
         statusLabel.sharpness = -100;
         statusLabel.defaultTextFormat = tf;
-        statusLabel.selectable = false;
+        statusLabel.selectable = true;
         statusLabel.width = stage.stageWidth;
 
         var signInBtn:SimpleButton = new SimpleButton("Sign In");
